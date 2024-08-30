@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -201,7 +200,7 @@
         <div class="info">
             <span>Parent Mobile: +91-9603484788</span>
             <div class="icons">
-                <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Call" onclick="makeCall('7416546101)">
+                <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Call" onclick="makeCall('9603484788')">
                 <img src="https://img.icons8.com/ios-filled/50/000000/sms.png" alt="Message" onclick="sendMessage('9603484788')">
             </div>
         </div>
