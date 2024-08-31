@@ -61,6 +61,8 @@
             max-width: 500px;
             transform: translateY(20px);
             transition: opacity 1s ease, transform 1s ease;
+            overflow-y: auto;
+            max-height: 70%;
         }
 
         .container.show {
@@ -142,6 +144,17 @@
         .icons img:hover {
             transform: scale(1.2);
         }
+
+        .student-entry {
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -155,8 +168,8 @@
         <h2>Student Details</h2>
         <label for="branch">Select Branch:</label>
         <select id="branch">
-            <option value="IT">IT</option>
-            <option value="CSE">CSE</option>
+            <option value="CSE">IT</option>
+            <option value="IT">CSE</option>
             <option value="CSE(AI)">CSE(AI)</option>
             <option value="ECE">ECE</option>
             <option value="EEE">EEE</option>
@@ -188,43 +201,24 @@
 
     <script>
         const students = [
-            {
-                name: "Kottu Sangeeth Kumar",
-                rollNumber: "22471A1243",
-                studentMobile: "+91-7416546101",
-                parentMobile: "+91-9603484788"
-            },
-            {
-                name: "Shaik Appapuram Firoz",
-                rollNumber: "22471A1244",
-                studentMobile: "+91-7416546101",
-                parentMobile: "+91-9603484788"
-            },
-            {
-                name: "Shaik Isamil",
-                rollNumber: "22471A1245",
-                studentMobile: "+91-7416546101",
-                parentMobile: "+91-9603484788"
-            },
-            {
-                name: "Shaik Nagur Vali",
-                rollNumber: "22471A1244",
-                studentMobile: "+91-7416546101",
-                parentMobile: "+91-9603484788"
-            },
-            {
-                name: "Shaik Saida Vali",
-                rollNumber: "22471A1249",
-                studentMobile: "+91-8123456789",
-                parentMobile: "+91-9123456789"
-            },
-            {
-                name: "Papana Yalamanda Rao",
-                rollNumber: "22471A1239",
-                studentMobile: "+91-7987654321",
-                parentMobile: "+91-8987654321"
-            }
+            { name: "Papana Yalamanda Rao", rollNumber: "22471A1239", studentMobile: "+91-7416546101", parentMobile: "+91-9603484788" },
+            { name: "Kottu Sangeeth Kumar", rollNumber: "22471A1243", studentMobile: "+91-7416546101", parentMobile: "+91-9603484788" },
+            { name: "Shaik Appapuram Firoz", rollNumber: "22471A1244", studentMobile: "+91-7416546101", parentMobile: "+91-9603484788" },
+            { name: "Shaik Ismail", rollNumber: "22471A1245", studentMobile: "+91-8123456789", parentMobile: "+91-9123456789" },
+            { name: "Shaik Nagur Vali", rollNumber: "22471A1248", studentMobile: "+91-7987654321", parentMobile: "+91-8987654321" },
+            { name: "Shaik Saida Vali", rollNumber: "22471A1249", studentMobile: "+91-7416546101", parentMobile: "+91-9603484788" },
+            // Add more students here
         ];
+
+        // Extend the students array to include 70 students
+        for (let i = 4; i <= 70; i++) {
+            students.push({
+                name: `Student ${i}`,
+                rollNumber: `22471A12${i}`,
+                studentMobile: `+91-70000000${i}`,
+                parentMobile: `+91-80000000${i}`
+            });
+        }
 
         window.onload = function() {
             setTimeout(function() {
@@ -237,30 +231,32 @@
             const container = document.getElementById('student-details');
             container.innerHTML = ''; // Clear previous entries
 
-            students.forEach(student => {
+            students.forEach((student, index) => {
                 const studentInfo = `
-                    <div class="info">
-                        <span><strong>Name:</strong> ${student.name}</span>
-                    </div>
-                    <div class="info">
-                        <span><strong>Roll Number:</strong> ${student.rollNumber}</span>
-                    </div>
-                    <div class="info">
-                        <span><strong>Student Mobile:</strong> ${student.studentMobile}</span>
-                        <div class="icons">
-                            <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Call" onclick="makeCall('${student.studentMobile}')">
-                            <img src="https://img.icons8.com/ios-filled/50/000000/sms.png" alt="Message" onclick="sendMessage('${student.studentMobile}')">
+                    <div class="student-entry">
+                        <h3>Student ${index + 1}</h3>
+                        <div class="info">
+                            <span><strong>Name:</strong> ${student.name}</span>
                         </div>
-                    </div>
-                    <div class="info">
-                        <span><strong>Parent Mobile:</strong> ${student.parentMobile}</span>
-                        <div class="icons">
-                            <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Call" onclick="makeCall('${student.parentMobile}')">
-                            <img src="https://img.icons8.com/ios-filled/50/000000/sms.png" alt="Message" onclick="sendMessage('${student.parentMobile}')">
+                        <div class="info">
+                            <span><strong>Roll Number:</strong> ${student.rollNumber}</span>
                         </div>
-                    </div>
-                    <hr>
-                `;
+                        <div class="info">
+                            <span><strong>Student Mobile:</strong> ${student.studentMobile}</span>
+                            <div class="icons">
+                                <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Call" onclick="makeCall('${student.studentMobile}')">
+                                <img src="https://img.icons8.com/ios-filled/50/000000/sms.png" alt="Message" onclick="sendMessage('${student.studentMobile}')">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span><strong>Parent Mobile:</strong> ${student.parentMobile}</span>
+                            <div class="icons">
+                                <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Call" onclick="makeCall('${student.parentMobile}')">
+                                <img src="https://img.icons8.com/ios-filled/50/000000/sms.png" alt="Message" onclick="sendMessage('${student.parentMobile}')">
+                            </div>
+                        </div>
+                        <hr>
+                    </div>`;
                 container.innerHTML += studentInfo;
             });
 
@@ -273,9 +269,8 @@
         }
 
         function sendMessage(number) {
-            window.location.href = `sms:${number}?body=Your child is absent for today's session`;
+            window.location.href = `sms:${number}?body=Your child is absent for today's session.`;
         }
     </script>
-
 </body>
 </html>
