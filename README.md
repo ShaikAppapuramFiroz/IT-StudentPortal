@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Student Info</title>
     <style>
-        body, html {
+        body,
+        html {
             margin: 0;
             padding: 0;
             width: 100%;
@@ -35,14 +36,15 @@
         }
 
         #splash-screen img {
-            max-width: 200px;
+            max-width: 150px;
             margin-bottom: 20px;
             box-shadow: 8px 8px 15px black;
         }
 
         #splash-screen h1 {
-            font-size: 30px;
+            font-size: 24px;
             text-shadow: 2px 2px 4px #000;
+            text-align: center;
         }
 
         #splash-screen.hide {
@@ -54,11 +56,11 @@
             display: none;
             text-align: center;
             background-color: #fff;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             width: 90%;
-            max-width: 500px;
+            max-width: 400px;
             transform: translateY(20px);
             transition: opacity 1s ease, transform 1s ease;
             overflow-y: auto;
@@ -83,13 +85,13 @@
             color: #555;
         }
 
-        select, input[type="text"] {
+        select,
+        input[type="text"] {
             padding: 10px;
             border: 2px solid #ddd;
             border-radius: 5px;
             margin-bottom: 20px;
             width: 100%;
-            max-width: 400px;
             box-sizing: border-box;
         }
 
@@ -123,10 +125,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         .info span {
-            font-size: 18px;
+            font-size: 16px;
+            max-width: 60%;
+            word-wrap: break-word;
         }
 
         .icons {
@@ -157,6 +162,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div id="splash-screen">
@@ -273,4 +279,5 @@
         }
     </script>
 </body>
+
 </html>
