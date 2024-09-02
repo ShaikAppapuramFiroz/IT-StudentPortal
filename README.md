@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -113,6 +115,8 @@
         #student-info {
             text-align: left;
             display: none;
+            overflow-y: auto;
+            max-height: 70vh; /* Allows scrolling if content is taller than 70% of the viewport height */
         }
 
         #student-info h3 {
@@ -129,7 +133,7 @@
         }
 
         .info span {
-            font-size: 16px;
+            font-size: 14px;
             max-width: 60%;
             word-wrap: break-word;
         }
@@ -159,6 +163,29 @@
             height: 1px;
             background: #ddd;
             margin: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            #splash-screen img {
+                max-width: 120px;
+            }
+
+            #splash-screen h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .info span {
+                font-size: 12px;
+                max-width: 100%;
+            }
+
+            .student-entry {
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
@@ -221,21 +248,14 @@
             students.push({
                 name: `Student ${i}`,
                 rollNumber: `22471A12${i}`,
-                studentMobile: `+91-70000000${i}`,
-                parentMobile: `+91-80000000${i}`
+                studentMobile: `+91-123456789${i % 10}`,
+                parentMobile: `+91-987654321${i % 10}`
             });
         }
 
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById('splash-screen').classList.add('hide');
-                document.getElementById('selectionForm').classList.add('show');
-            }, 1500);
-        };
-
         function displayStudentInfo() {
             const container = document.getElementById('student-details');
-            container.innerHTML = ''; // Clear previous entries
+            container.innerHTML = '';
 
             students.forEach((student, index) => {
                 const studentInfo = `
@@ -277,6 +297,14 @@
         function sendMessage(number) {
             window.location.href = `sms:${number}?body=Your child is absent for today's session.`;
         }
+
+        // Hide the splash screen after 2 seconds
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('splash-screen').classList.add('hide');
+                document.getElementById('selectionForm').classList.add('show');
+            }, 2000);
+        });
     </script>
 </body>
 
