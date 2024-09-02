@@ -116,7 +116,8 @@
             text-align: left;
             display: none;
             overflow-y: auto;
-            max-height: 70vh; /* Allows scrolling if content is taller than 70% of the viewport height */
+            max-height: 70vh;/* Allows scrolling if content is taller than 70% of the viewport height */
+            width:100%;
         }
 
         #student-info h3 {
